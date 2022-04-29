@@ -40,7 +40,7 @@ def projekt01_PiotraOtta18902():
     textContainer.grid_columnconfigure(1, weight=0)
     textContainer.grid_columnconfigure(2, weight=1)
     textContainer.grid(column=0, row=0, sticky='nswe', pady=5)
-    myImage = ttk.PhotoImage(file = 'avatarPepper.png')
+    myImage = ttk.PhotoImage(file = 'PepperHouse\\avatarPepper.png')
     myImage = myImage.subsample(3)
     imgButton = ttk.Button(textContainer, image=myImage, bootstyle='light')
     imgButton.grid(column=0, row=0, sticky='nse', padx=10, pady=20)
@@ -96,7 +96,7 @@ def projekt01_PiotraOtta18902():
         threadCompare = threading.Thread(target=Porownywarka, args=(textbox1.get(),textbox2.get(), labelAfterCompare))
         threadCompare.start()
     
-    findFileIcon = ttk.PhotoImage(file = 'outline_find_in_page_white_24dp.png')
+    findFileIcon = ttk.PhotoImage(file = 'PepperHouse\\outline_find_in_page_white_24dp.png')
 
     b3 = ttk.Button(frame, text="Porównaj dwa pliki", bootstyle="light-outline",command=lambda: manageStateCompare())
     b3.grid(column=0, row=3, sticky='nswe', rowspan=2, padx=5, pady=5)
