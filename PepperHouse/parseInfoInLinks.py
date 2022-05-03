@@ -7,7 +7,7 @@ import ttkbootstrap as ttk
 from urllib import request
 from bs4 import BeautifulSoup
 from numpy import double, loadtxt 
-from Obiekt import Obiekt
+from PepperHouse.Obiekt import Obiekt as Obiekt
 import requests
 
 class ParseInfoInLinks:
@@ -70,6 +70,7 @@ class ParseInfoInLinks:
         if _date:
             obiekt.data_dodania_oferty = datetime.fromisoformat(_date.get('content')).strftime("%d/%m/%Y %H:%M:%S")
         
+        obiekt.nazwa_biura = "PepperHouse"
         obiekt.cena = int(parsedHTML.find("p", {"class": "property-full-card_price"}).text.replace('zł','').replace(' ','')) or -1
 
         obiekt.numer_oferty = str(parsedHTML.find("div", {"class": "meta-header"}).find("ul").findAll("li")[0].find('strong').next_sibling.replace(' ', '')) or None
@@ -144,11 +145,13 @@ class ParseInfoInLinks:
     def __init__(self, ttkProgress:ttk.Progressbar = None, ttkLabel:ttk.Label = None, labelAfterParse:ttk.Label = None):
         if ttkProgress:
             ttkProgress['value'] = 0
-            ttkProgress.grid(column=1, row=1, sticky='we', padx=5, pady=5)
+            if labelAfterParse:
+                ttkProgress.grid(column=1, row=1, sticky='we', padx=5, pady=5)
             ttkLabel.configure(text='Analizowanie...', bootstyle="warning")
             ttkProgress.configure(bootstyle="warning-info")
-            ttkLabel.grid(column=2, row=1, sticky='nsw', padx=5, pady=5)
-            labelAfterParse.configure(text='')
+            if labelAfterParse: 
+                ttkLabel.grid(column=2, row=1, sticky='nsw', padx=5, pady=5)
+                labelAfterParse.configure(text='')
         # pobieram wszystkie możliwe atrybuty mojej klasy obiektu do tablicy
         _nullObject = Obiekt()
         atrybutyKlasyObiekt = inspect.getmembers(_nullObject, lambda a:not(inspect.isroutine(a)))
@@ -170,7 +173,7 @@ class ParseInfoInLinks:
             _i = _i + 1
         
         # zapis danych do pliku csv
-        nazwapliku = f'oferty{datetime.now().strftime("%d_%m_%Y__%H_%M_%S")}.csv'
+        nazwapliku = f'PepperHouse.csv'
         with open (nazwapliku,'w', encoding='utf-8', newline='') as file:
             writer = csv.DictWriter(file, fieldnames=atrybuty)
             writer.writeheader()
@@ -180,7 +183,8 @@ class ParseInfoInLinks:
             ttkProgress['value']+=ttkProgress['maximum']
             ttkProgress.configure(bootstyle='striped-success')
             ttkLabel.configure(text='Zakończono',bootstyle='Success')
-            labelAfterParse.configure(text=f'Przeanalizowany wyniki zapisano jako: {nazwapliku}')
+            if labelAfterParse:
+                labelAfterParse.configure(text=f'Przeanalizowany wyniki zapisano jako: {nazwapliku}')
 
 if __name__ == "__main__":
     ParseInfoInLinks()

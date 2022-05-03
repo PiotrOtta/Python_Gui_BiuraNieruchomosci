@@ -1,8 +1,7 @@
 import csv
 import os
-
 from numpy import savetxt
-from Obiekt import Obiekt
+from PepperHouse.Obiekt import Obiekt as Obiekt
 import ttkbootstrap as ttk
 
 class Porownywarka:

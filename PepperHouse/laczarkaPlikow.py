@@ -1,6 +1,6 @@
 import csv
 import os
-from Obiekt import Obiekt
+from PepperHouse.Obiekt import Obiekt as Obiekt
 import ttkbootstrap as ttk
 
 class LaczarkaPlikow:
@@ -9,16 +9,19 @@ class LaczarkaPlikow:
             path = name;
         else:
             path = os.path.abspath(f'{name}')
-        print(path)
         if not path.endswith('.csv'):
             path = f'{path}.csv'
             print('jop')
         with open(path, mode='r', encoding="utf8") as file:
             reader = csv.reader(file)
             atrybuty:list = []
-            atrybuty = next(reader)
+            if headers: 
+                atrybuty = next(reader)
             rows = []
+            indeks:int = 0
             for row in reader:
+                indeks += 1
+                if indeks == 1: continue
                 rows.append(row)
             if headers:
                 return atrybuty
@@ -51,11 +54,12 @@ class LaczarkaPlikow:
         self.textLabel = f'Arkusz połączony to: \"{name}\"'
 
     def __init__(self,nazwa1:str, nazwa2:str, nazwaPolaczenia:str = 'polaczenie', labelAfterJoin:ttk.Label = None):
+        headers = self.importObjectsFromCSV(nazwa1, True)
+        rows1 = self.importObjectsFromCSV(nazwa1)
+        rows2 = self.importObjectsFromCSV(nazwa2)
+        self.joinFiles(rows1, rows2, nazwaPolaczenia, headers)
         try:
-            headers = self.importObjectsFromCSV(nazwa1, True)
-            rows1 = self.importObjectsFromCSV(nazwa1)
-            rows2 = self.importObjectsFromCSV(nazwa2)
-            self.joinFiles(rows1, rows2, nazwaPolaczenia, headers)
+            
             if labelAfterJoin:
                 labelAfterJoin.configure(text=f'Ukończono połączenie.\n{self.textLabel}')
         except:
