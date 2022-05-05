@@ -10,8 +10,10 @@ import PepperHouse.laczarkaPlikow as PepperHouse_LaczarkaPlikow
 import PepperHouse.parseInfoInLinks as PepperHouse_ParseInfoInLinks
 import PepperHouse.porownywarka as PepperHouse_Porownywarka
 
+#Cargos
+import Cargos.generateData as Cargos_GenerateData
 wybraneBiuro = [True, False, False, False, False]
-nazwyPrzeanalizowanychPlikow = ["PepperHouse.csv", ".csv", ".csv", ".csv", ".csv"]
+nazwyPrzeanalizowanychPlikow = ["PepperHouse.csv", ".csv", "Cargos.csv", ".csv", ".csv"]
 
 filtryNazwy = ["Cena", "Powierzchnia", "Balkon", "Coś 2", "Coś 3"]
 filtry = [0]*len(filtryNazwy) # 0 - nie bierz pod uwagę, 1 - asc, 2 - desc
@@ -51,6 +53,12 @@ def PepperHouse(numerOperacji:int = None, progress = None, labelDownload = None)
         case 3: PepperHouse_Porownywarka.Porownywarka(), # to raczej jest useless do tego projektu
         case 4: PepperHouse_LaczarkaPlikow.LaczarkaPlikow()
 
+def Cargos(numerOperacji:int = None, progress = None, labelDownload = None):
+    match numerOperacji:
+        case 1: Cargos_GenerateData.GenerateData(progress, labelDownload)
+        # case 2:
+        # case 3:
+        # case 4:
 absPath:str = os.path.abspath(os.getcwd())
 def getFileName(Info:str = ""):
     name:str = filedialog.askopenfilename(
@@ -87,9 +95,9 @@ def projekt02_GUI():
     findFileIcon = ttk.PhotoImage(file = 'PepperHouse/outline_find_in_page_white_24dp.png')
     pepperHouse = ttk.PhotoImage(file = 'PepperHouse/avatarPepper.png')
     pepperHouse = pepperHouse.subsample(2)
-    KingdomElblag = ttk.PhotoImage(file = 'Kingdom Elblag/zdjecia/logo.png')
-    biuro3 = ttk.PhotoImage(file = 'PepperHouse/avatarPepper.png')
-    biuro3 = biuro3.subsample(2)
+    kingdomElblag = ttk.PhotoImage(file = 'Kingdom Elblag/zdjecia/logo.png')
+    cargos = ttk.PhotoImage(file = 'Cargos/avatarCargos.png')
+    cargos = cargos.subsample(2)
     biuro4 = ttk.PhotoImage(file = 'PepperHouse/avatarPepper.png')
     biuro4 = biuro4.subsample(2)
     biuro5 = ttk.PhotoImage(file = 'PepperHouse/avatarPepper.png')
@@ -109,9 +117,9 @@ def projekt02_GUI():
 
     office_1_button = ttk.Button(officeButtonsContainer, image=pepperHouse, bootstyle='light', command=lambda: handleOfficeButtonClick(office_1_button, 0))
     office_1_button.grid(column=0, row=1, padx=10, pady=20)
-    office_2_button = ttk.Button(officeButtonsContainer, image=KingdomElblag, bootstyle='disabled', command=lambda: handleOfficeButtonClick(office_2_button, 1))
+    office_2_button = ttk.Button(officeButtonsContainer, image=kingdomElblag, bootstyle='disabled', command=lambda: handleOfficeButtonClick(office_2_button, 1))
     office_2_button.grid(column=1, row=1, padx=10, pady=20)
-    office_3_button = ttk.Button(officeButtonsContainer, image=biuro3, bootstyle='disabled', command=lambda: handleOfficeButtonClick(office_3_button, 2))
+    office_3_button = ttk.Button(officeButtonsContainer, image=cargos, bootstyle='disabled', command=lambda: handleOfficeButtonClick(office_3_button, 2))
     office_3_button.grid(column=2, row=1, padx=10, pady=20)
     office_4_button = ttk.Button(officeButtonsContainer, image=biuro4, bootstyle='disabled', command=lambda: handleOfficeButtonClick(office_4_button, 3))
     office_4_button.grid(column=3, row=1, padx=10, pady=20)
@@ -139,8 +147,9 @@ def projekt02_GUI():
                 # Kingdom Elblag
                 print("Kingdom Elblag")
             case 2: 
-                # biuro 3
-                print("")
+                # Cargos
+                Cargos(1, progress, labelDownload)
+                # print("Cargos")
             case 3: 
                 # biuro 4
                 print("")
