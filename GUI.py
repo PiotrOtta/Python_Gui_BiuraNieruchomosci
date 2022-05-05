@@ -2,7 +2,7 @@ import csv
 import os
 import threading
 from tkinter import BOTTOM, Toplevel, filedialog
-from PIL import ImageTk, Image
+from PIL import ImageTk, Image, UnidentifiedImageError
 import ttkbootstrap as ttk
 # PepperHouse
 import PepperHouse.downloadAllLinks as PepperHouse_DownloadAllLinks
@@ -10,8 +10,10 @@ import PepperHouse.laczarkaPlikow as PepperHouse_LaczarkaPlikow
 import PepperHouse.parseInfoInLinks as PepperHouse_ParseInfoInLinks
 import PepperHouse.porownywarka as PepperHouse_Porownywarka
 
+import WGN.main as WGN
+
 wybraneBiuro = [True, False, False, False, False]
-nazwyPrzeanalizowanychPlikow = ["PepperHouse.csv", ".csv", ".csv", ".csv", ".csv"]
+nazwyPrzeanalizowanychPlikow = ["PepperHouse.csv", "wgnoferty.csv"]
 
 filtryNazwy = ["Cena", "Powierzchnia", "Balkon", "Coś 2", "Coś 3"]
 filtry = [0]*len(filtryNazwy) # 0 - nie bierz pod uwagę, 1 - asc, 2 - desc
@@ -88,7 +90,7 @@ def projekt02_GUI():
     pepperHouse = ttk.PhotoImage(file = 'PepperHouse/avatarPepper.png')
     pepperHouse = pepperHouse.subsample(2)
     KingdomElblag = ttk.PhotoImage(file = 'Kingdom Elblag/zdjecia/logo.png')
-    biuro3 = ttk.PhotoImage(file = 'PepperHouse/avatarPepper.png')
+    biuro3 = ttk.PhotoImage(file = 'WGN/wgn-biale.png')
     biuro3 = biuro3.subsample(2)
     biuro4 = ttk.PhotoImage(file = 'PepperHouse/avatarPepper.png')
     biuro4 = biuro4.subsample(2)
@@ -140,7 +142,7 @@ def projekt02_GUI():
                 print("Kingdom Elblag")
             case 2: 
                 # biuro 3
-                print("")
+                WGN.downloadOfertas(3, progress, labelDownload)
             case 3: 
                 # biuro 4
                 print("")
@@ -318,10 +320,21 @@ def projekt02_GUI():
             plikiZdjec = next(os.walk(f"{os.getcwd()}/zdjecia/{everyOffer[indeksOferty][21]}/"), (None, None, []))[2]
             if len(plikiZdjec)>0:
                 filename, file_extension = os.path.splitext(plikiZdjec[0])
-                if file_extension == ".jpg":
-                    with Image.open(f'{os.getcwd()}/zdjecia/{everyOffer[indeksOferty][21]}/{plikiZdjec[0]}') as im:
-                        im.thumbnail((160,80), Image.ANTIALIAS)
+                try:
+                    if file_extension == ".jpg":
+                        with Image.open(f'{os.getcwd()}/zdjecia/{everyOffer[indeksOferty][21]}/{plikiZdjec[0]}') as im:
+                            im.thumbnail((160, 80), Image.ANTIALIAS)
+                            im.save(f"{os.getcwd()}/zdjecia/{everyOffer[indeksOferty][21]}/{filename}.thumbnail", "JPEG")
+                except UnidentifiedImageError:
+                    if (everyOffer[indeksOferty][20] == "WGN"):
+                        filename = "\WGN\wgn.jpg"
+                    else:
+                        filename = "\PepperHouse/avatarPepper.jpg"
+                    with Image.open(f"{os.getcwd()}\WGN\wgn.jpg") as im:
+                        im.save(f"{os.getcwd()}/zdjecia/{everyOffer[indeksOferty][21]}/{filename}", "JPEG")
+                        im.thumbnail((160, 80), Image.ANTIALIAS)
                         im.save(f"{os.getcwd()}/zdjecia/{everyOffer[indeksOferty][21]}/{filename}.thumbnail", "JPEG")
+
                 zdjecia[indeksOferty-1] = ImageTk.PhotoImage(image=Image.open(f'{os.getcwd()}/zdjecia/{everyOffer[indeksOferty][21]}/{filename}.thumbnail'))
                 zdjecie = ttk.Label(pojedynczaOferta, image=zdjecia[indeksOferty-1])
                 zdjecie.grid(column=1, row=0, padx=10, rowspan=2, sticky="nswe")
