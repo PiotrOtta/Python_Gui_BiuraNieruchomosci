@@ -90,9 +90,9 @@ def projekt02_GUI():
     pepperHouse = ttk.PhotoImage(file = 'PepperHouse/avatarPepper.png')
     pepperHouse = pepperHouse.subsample(2)
     KingdomElblag = ttk.PhotoImage(file = 'Kingdom Elblag/zdjecia/logo.png')
-    biuro3 = ttk.PhotoImage(file = 'WGN/wgn-biale.png')
+    biuro3 = ttk.PhotoImage(file = 'PepperHouse/avatarPepper.png')
     biuro3 = biuro3.subsample(2)
-    biuro4 = ttk.PhotoImage(file = 'PepperHouse/avatarPepper.png')
+    biuro4 = ttk.PhotoImage(file = 'WGN/wgn-biale.png')
     biuro4 = biuro4.subsample(2)
     biuro5 = ttk.PhotoImage(file = 'PepperHouse/avatarPepper.png')
     biuro5 = biuro5.subsample(2)
@@ -142,10 +142,10 @@ def projekt02_GUI():
                 print("Kingdom Elblag")
             case 2: 
                 # biuro 3
-                WGN.downloadOfertas(3, progress, labelDownload)
+                print("")
             case 3: 
                 # biuro 4
-                print("")
+                WGN.downloadOfertas(3, progress, labelDownload)
             case 4: 
                 # biuro 5
                 print("")

@@ -112,11 +112,11 @@ def downloadOfertas(limit, ttkProgress:ttk.Progressbar, ttkLabel:ttk.Label):
 
 
     oferty = []
-   #  newOferty = []
+    # newOferty = []
     ofertyLinki = []
-   # previousLinks = []
+    # previousLinks = []
 
-    file_exists = exists('wgnoferty.csv')
+    #file_exists = exists('wgnoferty.csv')
 
     # if file_exists:
     #     with open('wgnoferty.csv', 'r', encoding="utf-8", newline='') as f:
@@ -136,7 +136,7 @@ def downloadOfertas(limit, ttkProgress:ttk.Progressbar, ttkLabel:ttk.Label):
     for k in typy_transakcji:
 
         for i in typy:
-            print('https://' + k + '-' + i + linkBaza)
+            #print('https://' + k + '-' + i + linkBaza)
             page = urllib.request.urlopen('https://' + k + '-' + i + linkBaza)
             code = page.read().decode('utf-8')
             soup = BeautifulSoup(code, "html.parser")
@@ -176,24 +176,33 @@ def downloadOfertas(limit, ttkProgress:ttk.Progressbar, ttkLabel:ttk.Label):
                         # item['liczba_zdjec'] = len(subsoup.find_all("img")) dziala zle
                         item['nazwa_biura'] = "WGN"
 
-                        imgLink = subsoup.find("a", class_="main-img").findChild('img').get('src')
-
                         nrOferty = link.partition("oferta/")[2][0:6]
 
+                        try:
+                            imgLink = subsoup.find("a", class_="main-img").findChild('img').get('src')
+                            item['zdjecie_glowne_link'] = imgLink
+
+                            if not os.path.exists(f'zdjecia'):
+                                os.mkdir(f'zdjecia')
+                            if not os.path.exists(f'zdjecia/' + nrOferty):
+                                os.mkdir(f'zdjecia/' + nrOferty)
+                            img = requests.get(imgLink, allow_redirects=False)
+
+                            f = open(f'zdjecia/' + nrOferty + '/main.jpg', 'wb')
+                            f.write(img.content)
+                            f.close()
+
+                            item['zdjecie_glowne'] = os.path.abspath(f'zdjecia/' + nrOferty + '/main.jpg')
+                        except (AttributeError):
+                            item['zdjecie_glowne_link'] = -1
+                            item['zdjecie_glowne'] = -1
+
+
+
                         item['numer_oferty'] = nrOferty
-                        item['zdjecie_glowne_link'] = imgLink
 
-                        if not os.path.exists(f'zdjecia'):
-                            os.mkdir(f'zdjecia')
-                        if not os.path.exists(f'zdjecia/' + nrOferty):
-                            os.mkdir(f'zdjecia/' + nrOferty)
-                        img = requests.get(imgLink, allow_redirects=False)
 
-                        f = open(f'zdjecia/' + nrOferty + '/main.jpg', 'wb')
-                        f.write(img.content)
-                        f.close()
 
-                        item['zdjecie_glowne'] = os.path.abspath(f'zdjecia/' + nrOferty + '/main.jpg')
 
                         for key, value in item.items():
                             if value is None:
@@ -202,7 +211,7 @@ def downloadOfertas(limit, ttkProgress:ttk.Progressbar, ttkLabel:ttk.Label):
                         oferty.append(item)
 
                        # if (link not in previousLinks):
-                         #   newOferty.append(item)
+                        #  newOferty.append(item)
 
                         licznik = licznik + 1
 
@@ -222,7 +231,7 @@ def downloadOfertas(limit, ttkProgress:ttk.Progressbar, ttkLabel:ttk.Label):
              #   w.writerows(newOferty)
               #  f.close()
 
-    print("WGN - FIN")
+    #print("WGN - FIN")
     if ttkProgress:
         ttkProgress['value'] += ttkProgress['maximum']
         ttkProgress.configure(bootstyle='striped-success')
