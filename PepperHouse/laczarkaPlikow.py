@@ -39,15 +39,9 @@ class LaczarkaPlikow:
             for i in importantFieldIndexes:
                 if item[i] == -1: continue
                 if row2[i] == item[i]: sameChance += 1
-            if ((row2[17] == item[17]) and (item[16] != -1)) or (((row2[19] == item[19]) and (item[19] != -1)) and ((row2[8] == item[8]) and (item[8] != -1))):
+            if ((row2[17] == item[17]) and ((item[16] != -1) or (row2[19] == item[19]))) and ((item[19] != -1) and ((row2[8] == item[8]) and (item[8] != -1))):
                 sameChance *= 3
-                print("TAK!")
-                print(row2[17] == item[17] and item[16] != -1)
-                print(row2[19] == item[19] and item[19] != -1) and (row2[8] == item[8] and item[8] != -1)
             if sameChance >= 7:
-                print(sameChance)
-                print(row2)
-                print(item)
                 return False
         return True
 

@@ -166,6 +166,8 @@ def downloadOfertas(limit, ttkProgress:ttk.Progressbar, ttkLabel:ttk.Label):
                                 valueText = rows[z + 1].text
                                 item[keyText] = cleanText(valueText)
 
+                        item["Cenazł€$"] = item["Cenazł€$"].replace("okazja!", "")
+
                         item["typ transakcji"] = k
                         item["link"] = link
                         now = datetime.date.today()
