@@ -133,7 +133,7 @@ class GenerateData:
                     stan_prawny_dzialki = actions.stan_prawny_dzialki(offer)
                     telefon = str(actions.telefon(offer))
                     email = actions.email(offer)
-                    nazwa_biura = actions.email(offer)
+                    nazwa_biura = actions.nazwa_biura(offer)
                     data_dodania_oferty = actions.data_dodania_oferty(offer)
 
                     info = [balkon, budynek_pietra, cena, cena_za_m2, data_dodania_oferty, data_skanowania, dojazd,

@@ -142,21 +142,21 @@ def projekt02_GUI():
     def PobierzIPrzeanalizuj(progress, labelDownload):
         indeksAktywnegoBiura = [item for item, biuro in enumerate(wybraneBiuro) if biuro]
         match indeksAktywnegoBiura[0]:
-            case 0: 
+            case 0:
                 # PepperHouse
                 PepperHouse(1, progress, labelDownload)
                 PepperHouse(2, progress, labelDownload)
-            case 1: 
+            case 1:
                 # Kingdom Elblag
                 print("Kingdom Elblag")
-            case 2: 
+            case 2:
                 # Cargos
                 Cargos(1, progress, labelDownload)
                 # print("Cargos")
-            case 3: 
+            case 3:
                 # biuro 4
                 WGN.downloadOfertas(3, progress, labelDownload)
-            case 4: 
+            case 4:
                 # biuro 5
                 print("")
 
@@ -172,7 +172,7 @@ def projekt02_GUI():
     def manageStateJoin():
         threadJoin = threading.Thread(target=scal)
         threadJoin.start()
-    
+
     def scal():
         if not os.path.exists(nazwaPolaczonegoPliku):
             with open (f'{nazwaPolaczonegoPliku}','w', encoding='utf-8', newline='') as file:
@@ -180,7 +180,7 @@ def projekt02_GUI():
         for nazwaPliku in nazwyPrzeanalizowanychPlikow:
             if os.path.exists(nazwaPliku):
                 PepperHouse_LaczarkaPlikow.LaczarkaPlikow(
-                    nazwa1=nazwaPliku, 
+                    nazwa1=nazwaPliku,
                     nazwa2=nazwaPolaczonegoPliku, nazwaPolaczenia=nazwaPolaczonegoPliku)
             else:
                 print(f"Nie można znaleźć pliku {nazwaPliku}")
@@ -271,7 +271,7 @@ def projekt02_GUI():
                 else:
                     zdjeciaSzczegoly[zapisaneIndeks] = ttk.PhotoImage(image=Image.open(f'{os.getcwd()}/zdjecia/{everyOffer[indeksOferty][21]}/{filename}.png'))
                 zapisaneIndeks += 1
-        
+
         global indeksZmianyZdjecia
         indeksZmianyZdjecia = 0
         def zmienZdjecie(nastepny:bool):
@@ -331,21 +331,25 @@ def projekt02_GUI():
             if len(plikiZdjec)>0:
                 filename, file_extension = os.path.splitext(plikiZdjec[0])
                 try:
-                    if file_extension == ".jpg":
+                    if file_extension == ".jpg" or file_extension == ".JPG":
                         with Image.open(f'{os.getcwd()}/zdjecia/{everyOffer[indeksOferty][21]}/{plikiZdjec[0]}') as im:
                             im.thumbnail((160, 80), Image.ANTIALIAS)
                             im.save(f"{os.getcwd()}/zdjecia/{everyOffer[indeksOferty][21]}/{filename}.thumbnail", "JPEG")
                 except UnidentifiedImageError:
                     if (everyOffer[indeksOferty][20] == "WGN"):
                         filename = "\WGN\wgn.jpg"
+                    elif everyOffer[indeksOferty][20] == "Cargos Nieruchomości":
+                        filename = "\Cargos/avatarCargos.jpg"
                     else:
                         filename = "\PepperHouse/avatarPepper.jpg"
                     with Image.open(f"{os.getcwd()}\WGN\wgn.jpg") as im:
                         im.save(f"{os.getcwd()}/zdjecia/{everyOffer[indeksOferty][21]}/{filename}", "JPEG")
                         im.thumbnail((160, 80), Image.ANTIALIAS)
                         im.save(f"{os.getcwd()}/zdjecia/{everyOffer[indeksOferty][21]}/{filename}.thumbnail", "JPEG")
-
-                zdjecia[indeksOferty-1] = ImageTk.PhotoImage(image=Image.open(f'{os.getcwd()}/zdjecia/{everyOffer[indeksOferty][21]}/{filename}.thumbnail'))
+                try:
+                    zdjecia[indeksOferty-1] = ImageTk.PhotoImage(image=Image.open(f'{os.getcwd()}/zdjecia/{everyOffer[indeksOferty][21]}/{filename}.thumbnail'))
+                except:
+                    zdjecia[indeksOferty - 1] = ImageTk.PhotoImage(image=Image.open(f'{os.getcwd()}/no_thumbnail.thumbnail'))
                 zdjecie = ttk.Label(pojedynczaOferta, image=zdjecia[indeksOferty-1])
                 zdjecie.grid(column=1, row=0, padx=10, rowspan=2, sticky="nswe")
             numerOferty = ttk.Label(pojedynczaOferta, text=f"Nr. oferty: {everyOffer[indeksOferty][21]}")
