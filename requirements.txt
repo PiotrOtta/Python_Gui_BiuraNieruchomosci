@@ -1,3 +1,5 @@
 tk
 ttkbootstrap
 beautifulsoup4
+numpy
+requests

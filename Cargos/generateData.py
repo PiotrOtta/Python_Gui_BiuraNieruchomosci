@@ -1,4 +1,5 @@
 import csv
+import json
 import os
 from datetime import datetime
 
@@ -10,11 +11,18 @@ import ttkbootstrap as ttk
 
 url = "https://cargos.com.pl/pl/oferty/page-{}/?go=1&city=0&type=0&ofert=0&start_end_price=0&room=0&query="
 domain = "https://cargos.com.pl/"
-limit = 10
+abs_path = os.path.dirname(os.path.abspath(__file__))
 
 
 class GenerateData:
     def __init__(self, ttkProgress: ttk.Progressbar = None, ttkLabel: ttk.Label = None, to_compare=None):
+        try:
+            with open(os.path.abspath(os.path.join(abs_path, "../config.json")), 'r') as f:
+                config = json.load(f)
+                limit = config["download_limit"]
+        except:
+            limit = 10
+
         if ttkProgress:
             ttkProgress['value'] = 0
             ttkProgress.grid(column=1, row=0, sticky='we', padx=5, pady=5)
@@ -85,7 +93,10 @@ class GenerateData:
                         # print(typ)
                         continue
                     numer_oferty = actions.numer_oferty(offer)
-                    zdjecia_glowne = actions.zdjecia_glowne(lista, "zdjecia_Cargos", numer_oferty)
+                    zdjecia_glowne = actions.zdjecia_glowne(lista,
+                                                            os.path.abspath(os.path.join(abs_path,
+                                                                                         "../zdjecia_Cargos")),
+                                                            numer_oferty)
                     if to_compare is not None:
                         toContinue = True
                         for line in data1:
