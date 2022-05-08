@@ -617,10 +617,10 @@ def projekt02_GUI():
                         filename = "\Cargos/avatarCargos.jpg"
                     else:
                         filename = "\PepperHouse/avatarPepper.jpg"
-                    with Image.open(f"{os.getcwd()}\WGN\wgn.jpg") as im:
-                        im.save(f"{os.getcwd()}/zdjecia/{offersToShow[indeksOferty][21]}/{filename}", "JPEG")
+                    with Image.open(f"{os.getcwd()}{filename}") as im:
+                        im.save(f"{os.getcwd()}/zdjecia/{offersToShow[indeksOferty][21]}/{offersToShow[indeksOferty][20]}.jpg", "JPEG")
                         im.thumbnail((160, 80), Image.ANTIALIAS)
-                        im.save(f"{os.getcwd()}/zdjecia/{offersToShow[indeksOferty][21]}/{filename}.thumbnail", "JPEG")
+                        im.save(f"{os.getcwd()}/zdjecia/{offersToShow[indeksOferty][21]}/{offersToShow[indeksOferty][20]}.jpg.thumbnail", "JPEG")
                 try:
                     zdjecia[indeksOferty - 1] = ImageTk.PhotoImage(image=Image.open(
                         f'{os.getcwd()}/zdjecia/{offersToShow[indeksOferty][21]}/{filename}.thumbnail'))

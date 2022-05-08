@@ -166,7 +166,6 @@ def downloadOfertas(limit, ttkProgress:ttk.Progressbar, ttkLabel:ttk.Label):
                                 valueText = rows[z + 1].text
                                 item[keyText] = cleanText(valueText)
 
-                        item["Cenazł€$"] = item["Cenazł€$"].replace("okazja!", "")
 
                         item["typ transakcji"] = k
                         item["link"] = link
@@ -209,6 +208,12 @@ def downloadOfertas(limit, ttkProgress:ttk.Progressbar, ttkLabel:ttk.Label):
                         for key, value in item.items():
                             if value is None:
                                 item[key] = -1
+
+                        item["Cenazł€$"] = item["Cenazł€$"].replace("okazja!", "").replace(" ", "")
+                        item["Cena /m²"] = item["Cena /m²"].replace(" ", "")
+                        item["Powierzchnia"] = item["Powierzchnia"].replace(" m²", "")
+                        if item["Powierzchnia działki"] != -1:
+                            item["Powierzchnia działki"] = item["Powierzchnia działki"].replace(" m²", "")
 
                         oferty.append(item)
 

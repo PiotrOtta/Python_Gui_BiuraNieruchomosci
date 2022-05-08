@@ -4,25 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a24c28e0-506e-4260-93b3-2fc8fc2658c1" name="Changes" comment="JPG formatting check fix, Cargos fixes">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cargos.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Cargos.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cargos/actions.py" beforeDir="false" afterPath="$PROJECT_DIR$/Cargos/actions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cargos/generateData.py" beforeDir="false" afterPath="$PROJECT_DIR$/Cargos/generateData.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/GUI.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PepperHouse.csv" beforeDir="false" afterPath="$PROJECT_DIR$/PepperHouse.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/linkiDoOfert.csv" beforeDir="false" afterPath="$PROJECT_DIR$/linkiDoOfert.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zdjecia_Cargos/BX04211/BX042111.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zdjecia_Cargos/BX04244/BX042441.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zdjecia_Cargos/BX04251/BX042511.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zdjecia_Cargos/BX04254/BX042541.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zdjecia_Cargos/CA01071/CA010711.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zdjecia_Cargos/CA01072/CA010721.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zdjecia_Cargos/EL02736/EL027361.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zdjecia_Cargos/EL02738/EL027381.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zdjecia_Cargos/ST02035/ST020351.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/zdjecia_Cargos/ST02037/ST020371.JPG" beforeDir="false" />
-    </list>
+    <list default="true" id="a24c28e0-506e-4260-93b3-2fc8fc2658c1" name="Changes" comment="JPG formatting check fix, Cargos fixes" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
