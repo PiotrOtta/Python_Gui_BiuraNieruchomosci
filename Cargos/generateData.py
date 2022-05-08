@@ -26,8 +26,8 @@ class GenerateData:
         if ttkProgress:
             ttkProgress['value'] = 0
             ttkProgress.grid(column=1, row=0, sticky='we', padx=5, pady=5)
-            ttkLabel.configure(text='Pobieranie...', bootstyle="info")
-            ttkProgress.configure(bootstyle="striped-info")
+            ttkLabel.configure(text='Analizowanie...', bootstyle="warning")
+            ttkProgress.configure(bootstyle="warning-info")
             ttkLabel.grid(column=2, row=0, sticky='nsw', padx=5, pady=5)
 
         pageNumber = 1

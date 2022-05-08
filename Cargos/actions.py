@@ -112,6 +112,9 @@ class Actions:
             else:
                 shutil.rmtree(nr_path, ignore_errors=True)
             name = os.path.basename(urlparse(tmpUrl).path)
+            filename, file_extension = os.path.splitext(name)
+            if file_extension == ".JPG":
+                name = filename+".jpg"
             # photo = os.path.join(os.path.dirname(__file__), timestamp + "/" + name)
             photo = os.path.join(nr_path, name)
 
@@ -381,7 +384,7 @@ class Actions:
             phones = []
             for tel in tmp:
                 phones.append(re.sub(' +', '', tel.text.strip()))
-            return phones
+            return phones[0]
         except:
             return -1
 
