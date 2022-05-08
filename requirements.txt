@@ -3,3 +3,4 @@ ttkbootstrap
 beautifulsoup4
 numpy
 requests
+pillow >= 9.1.0
