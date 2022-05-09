@@ -13,10 +13,13 @@ import PepperHouse.porownywarka as PepperHouse_Porownywarka
 # Cargos
 import Cargos.generateData as Cargos_GenerateData
 
+#Kingdom
+import KingdomElblag.kingdom_csv as kingodmcsv
+
 import WGN.main as WGN
 
 wybraneBiuro = [True, False, False, False, False]
-nazwyPrzeanalizowanychPlikow = ["PepperHouse.csv", ".csv", "Cargos.csv", "wgnoferty.csv", ".csv"]
+nazwyPrzeanalizowanychPlikow = ["PepperHouse.csv", "KingdomElblag/KingdomElblag.csv", "Cargos.csv", "wgnoferty.csv", ".csv"]
 
 sortNazwy = ["Nazwa", "Cena", "Powierzchnia", "Numer oferty"]
 sorty = [0] * len(sortNazwy)  # 0 - nie bierz pod uwagę, 1 - asc, 2 - desc
@@ -58,6 +61,9 @@ def Cargos(numerOperacji: int = None, progress=None, labelDownload=None):
         # case 3:
         # case 4:
 
+def Kingdom(numerOperacji:int = None):
+    match numerOperacji:
+        case 1: kingodmcsv.pobierzOferty()
 
 absPath: str = os.path.abspath(os.getcwd())
 
@@ -97,7 +103,7 @@ def projekt02_GUI():
     findFileIcon = ttk.PhotoImage(file='PepperHouse/outline_find_in_page_white_24dp.png')
     pepperHouse = ttk.PhotoImage(file='PepperHouse/avatarPepper.png')
     pepperHouse = pepperHouse.subsample(2)
-    kingdomElblag = ttk.PhotoImage(file='Kingdom Elblag/zdjecia/logo.png')
+    kingdomElblag = ttk.PhotoImage(file='KingdomElblag/zdjecia/logo.png')
     cargos = ttk.PhotoImage(file='Cargos/avatarCargos.png')
     cargos = cargos.subsample(2)
     biuro4 = ttk.PhotoImage(file='WGN/wgn-biale.png')
