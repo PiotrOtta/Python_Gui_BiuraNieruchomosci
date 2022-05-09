@@ -49,8 +49,7 @@ def joinFiles(path1, path2):
 
 
 def downloadOfertas(limit, ttkProgress:ttk.Progressbar, ttkLabel:ttk.Label):
-    keys = [
-        'Balkon',
+    keys = ['Balkon',
         'Ilość kondygnacji',
         'Cenazł€$',
         'Cena /m²',
@@ -96,6 +95,7 @@ def downloadOfertas(limit, ttkProgress:ttk.Progressbar, ttkLabel:ttk.Label):
         'Wystawa Okien',
         'zdjecie_glowne',
         'zdjecie_glowne_link',
+
     ]
 
     if ttkProgress:

@@ -18,8 +18,10 @@ import KingdomElblag.kingdom_csv as kingodmcsv
 
 import WGN.main as WGN
 
+import ELFACTOR.elfactor as Elfactor
+
 wybraneBiuro = [True, False, False, False, False]
-nazwyPrzeanalizowanychPlikow = ["PepperHouse.csv", "KingdomElblag/KingdomElblag.csv", "Cargos.csv", "wgnoferty.csv", ".csv"]
+nazwyPrzeanalizowanychPlikow = ["PepperHouse.csv", "KingdomElblag/KingdomElblag.csv", "Cargos.csv", "wgnoferty.csv", "elfactor.csv"]
 
 sortNazwy = ["Nazwa", "Cena", "Powierzchnia", "Numer oferty"]
 sorty = [0] * len(sortNazwy)  # 0 - nie bierz pod uwagę, 1 - asc, 2 - desc
@@ -108,8 +110,8 @@ def projekt02_GUI():
     cargos = cargos.subsample(2)
     biuro4 = ttk.PhotoImage(file='WGN/wgn-biale.png')
     biuro4 = biuro4.subsample(2)
-    biuro5 = ttk.PhotoImage(file='PepperHouse/avatarPepper.png')
-    biuro5 = biuro5.subsample(2)
+    elFactor = ttk.PhotoImage(file='ELFACTOR/avatarElfactor.png')
+    elFactor = elFactor.subsample(2)
 
     textContainer = ttk.Frame(underRoot)
     textContainer.grid(column=0, row=0, sticky='nswe', pady=5)
@@ -135,7 +137,7 @@ def projekt02_GUI():
     office_4_button = ttk.Button(officeButtonsContainer, image=biuro4, bootstyle='disabled',
                                  command=lambda: handleOfficeButtonClick(office_4_button, 3))
     office_4_button.grid(column=3, row=1, padx=10, pady=20)
-    office_5_button = ttk.Button(officeButtonsContainer, image=biuro5, bootstyle='disabled',
+    office_5_button = ttk.Button(officeButtonsContainer, image=elFactor, bootstyle='disabled',
                                  command=lambda: handleOfficeButtonClick(office_5_button, 4))
     office_5_button.grid(column=4, row=1, padx=10, pady=20)
     global officeButton
@@ -167,8 +169,8 @@ def projekt02_GUI():
                 # biuro 4
                 WGN.downloadOfertas(3, progress, labelDownload)
             case 4:
-                # biuro 5
-                print("")
+                Elfactor.pobierz_aktualna_oferte()
+                print("Oferta elfactor")
 
     def manageStateDownload():
         threadDownload = threading.Thread(target=PobierzIPrzeanalizuj, args=(progress, labelDownload))
@@ -531,7 +533,7 @@ def projekt02_GUI():
             zdjeciaSzczegoly = [None] * len(odpowiednieZdjecia)
             for nazwa in odpowiednieZdjecia:
                 filename, file_extension = os.path.splitext(nazwa)
-                if file_extension == ".jpg":
+                if file_extension.lower() == ".jpg":
                     zdjeciaSzczegoly[zapisaneIndeks] = ImageTk.PhotoImage(image=(
                         Image.open(f'{os.getcwd()}/zdjecia/{everyOffer[indeksOferty][21]}/{filename}.jpg')).resize(
                         (200, 150)))
@@ -557,7 +559,7 @@ def projekt02_GUI():
 
         labelPhotoImage = ttk.Label(panelWewnetrzny)
         labelPhotoImage.grid(column=1, row=0, padx=10, rowspan=2, sticky="")
-        if len(zdjeciaSzczegoly) > 0:
+        if zdjeciaSzczegoly and len(zdjeciaSzczegoly) > 0:
             labelPhotoImage.configure(image=zdjeciaSzczegoly[0])
             if len(zdjeciaSzczegoly) > 1:
                 bajtonLeft = ttk.Button(panelWewnetrzny, text="Poprzednie", command=lambda: zmienZdjecie(False))
