@@ -34,25 +34,32 @@ class LaczarkaPlikow:
             sameChance = 0
             if row2[21] == item[21]:
                 sameChance += 100
-            importantFieldIndexes = [0, 2, 9, 12, 25, 27, 35]
+            # importantFieldIndexes = [0, 2, 9, 12, 25, 27, 35]
+            importantFieldIndexes = [0, 2, 12, 25, 27]
 
             for i in importantFieldIndexes:
                 if item[i] == -1: continue
                 if row2[i] == item[i]: sameChance += 1
-            if ((row2[17] == item[17]) and ((item[16] != -1) or (row2[19] == item[19]))) and ((item[19] != -1) and ((row2[8] == item[8]) and (item[8] != -1))):
+            if (row2[17] == item[17]) and (item[17] != -1):
                 sameChance *= 3
-            if sameChance >= 7:
+            if sameChance >= 10:
                 return False
         return True
 
     def joinFiles(self, rows1, rows2, name: str, headers: list):
-        lista: list = rows1
-        for row2 in rows2:
+        lista: list = rows2
+        kopiaListy = lista
+        for row2 in rows1:
             _state = self.evalutateDifferences(lista, row2)
             if _state:
-                lista.append(row2)
+                kopiaListy.append(row2)
+            else:
+                try:
+                    kopiaListy.remove(row2)
+                except:
+                    print(row2)
         listaObiektow: list = []
-        for row in lista:
+        for row in kopiaListy:
             obiektPolaczony: Obiekt = Obiekt()
             obiektPolaczony.fromList(headers, row)
             obiektPolaczony.fillEmpty()
