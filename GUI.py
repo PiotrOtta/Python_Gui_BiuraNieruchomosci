@@ -1,5 +1,6 @@
 import csv
 import os
+import re
 import threading
 from tkinter import BOTTOM, Toplevel, filedialog, messagebox
 from PIL import ImageTk, Image, UnidentifiedImageError
@@ -425,7 +426,7 @@ def projekt02_GUI():
                     if minPieter > maxPieter:
                         error = True
                         bledne.append("Pietra - max<min")
-                    filteringOffers = filter(lambda item: (maxPieter >= int(item[1]) >= minPieter),
+                    filteringOffers = filter(lambda item: (maxPieter >= int(0 if "".join(re.findall("\[0-9]",item[1])) == '' else "".join(re.findall("\[0-9]",item[1])))>= minPieter),
                                              filteringOffers)
                 except:
                     error = True
