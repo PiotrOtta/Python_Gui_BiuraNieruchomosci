@@ -185,9 +185,12 @@ def projekt02_GUI():
 
     def manageStateJoin():
         threadJoin = threading.Thread(target=scal)
+        threadJoin.daemon = True
         threadJoin.start()
 
     def scal():
+        if os.path.exists(nazwaPolaczonegoPliku):
+            os.remove(nazwaPolaczonegoPliku)
         if not os.path.exists(nazwaPolaczonegoPliku):
             with open(f'{nazwaPolaczonegoPliku}', 'w', encoding='utf-8', newline='') as file:
                 print("Nowy plik csv")
