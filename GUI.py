@@ -556,7 +556,7 @@ def projekt02_GUI():
             labelPhotoImage.configure(image=zdjeciaSzczegoly[indeksZmianyZdjecia])
 
         labelPhotoImage = ttk.Label(panelWewnetrzny)
-        labelPhotoImage.grid(column=1, row=0, padx=10, rowspan=2, sticky="nswe")
+        labelPhotoImage.grid(column=1, row=0, padx=10, rowspan=2, sticky="")
         if len(zdjeciaSzczegoly) > 0:
             labelPhotoImage.configure(image=zdjeciaSzczegoly[0])
             if len(zdjeciaSzczegoly) > 1:
@@ -565,12 +565,28 @@ def projekt02_GUI():
                 bajtonRight = ttk.Button(panelWewnetrzny, text="Następne", command=lambda: zmienZdjecie(True))
                 bajtonRight.grid(column=2, row=0, sticky="nsw")
 
-        lokal = ttk.Label(panelWewnetrzny, text=everyOffer[indeksOferty][17], wraplength=280, justify=ttk.CENTER,
-                          anchor="center")
-        lokal.grid(column=0, columnspan=3, row=2, sticky="nswe", padx=10, pady=10)
-        Opis = ttk.Label(panelWewnetrzny, text=everyOffer[indeksOferty][23], wraplength=280, justify=ttk.CENTER,
-                         anchor="center")
-        Opis.grid(column=0, columnspan=3, row=3, sticky="nswe", padx=10, pady=10)
+        #Tabela z info
+        row_names = ['balkon', 'budynek_pietra', 'cena', 'cena_za_m2', 'data_dodania_oferty', 'data_skanowania',
+        'dojazd', 'dostepny', 'dzielnica', 'email', 'kaucja', 'liczba_lazienek', 'liczba_pomieszczen',
+        'liczba_wyswietlen', 'liczba_zdjec', 'link', 'lokale_uzytkowe', 'lokalizacja', 'miejsce_parkingowe',
+        'miejscowosc', 'nazwa_biura', 'numer_oferty', 'ogrod', 'opis', 'oplaty', 'pietro', 'piwnica',
+        'powierzchnia', 'powierzchnia_dzialki', 'przeznaczenie', 'rok_budowy', 'rynek', 'stan_prawny_dzialki', 'stan_wykonczenia',
+        'standard_wykonczenia', 'telefon', 'typ', 'typ_transakcji', 'typ_zabudowy', 'ulica', 'umeblowanie',
+        'winda', 'wojewodztwo', 'wystawa_okien', 'zdjecie_glowne', 'zdjecie_glowne_link']
+
+        for x in range(len(row_names)):
+            if (x == 23 or x == 44 or x == 45):
+                continue
+            else:
+                temp_dane = everyOffer[indeksOferty][x]
+                if (temp_dane == '-1'):
+                    temp_dane = 'Brak danych'
+                ttk.Label(panelWewnetrzny, text=row_names[x]+' : '+temp_dane).grid(row=x+2, column=1)
+        
+        lokal = ttk.Label(panelWewnetrzny, text=everyOffer[indeksOferty][17], wraplength=280, justify=ttk.CENTER, anchor="center")
+        lokal.grid(column=1,row=3)
+        Opis = ttk.Label(panelWewnetrzny, text=everyOffer[indeksOferty][23], wraplength=600, justify=ttk.CENTER, anchor="center",borderwidth=2, relief="groove")
+        Opis.grid(column=1, row=len(row_names)+5)
 
     # oferty
     oferty.columnconfigure(0, weight=1)
