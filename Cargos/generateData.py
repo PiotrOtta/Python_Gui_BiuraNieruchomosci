@@ -80,7 +80,7 @@ class GenerateData:
                     zdjecia_glowne_link = actions.zdjecia_glowne_link(lista)
                     dostepny = actions.dostepny(offer)
                     if link == -1 or not offer:
-                        zdjecia_glowne = actions.zdjecia_glowne(lista, "zdjecia_Cargos", lokalizacja)
+                        zdjecia_glowne = actions.zdjecia_glowne(lista, "zdjecia", lokalizacja)
                         data.writerow(
                             [-1, -1, cena, -1, -1, data_skanowania, -1,
                              dostepny, -1, -1, -1, -1, liczba_pomieszczen, -1,
@@ -95,7 +95,7 @@ class GenerateData:
                     numer_oferty = actions.numer_oferty(offer)
                     zdjecia_glowne = actions.zdjecia_glowne(lista,
                                                             os.path.abspath(os.path.join(abs_path,
-                                                                                         "../zdjecia_Cargos")),
+                                                                                         "../zdjecia")),
                                                             numer_oferty)
                     if to_compare is not None:
                         toContinue = True

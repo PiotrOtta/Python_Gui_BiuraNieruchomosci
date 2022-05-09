@@ -107,21 +107,28 @@ class Actions:
             if not os.path.exists(folder):
                 os.mkdir(folder)
             nr_path = os.path.join(folder, nr)
-            if not os.path.exists(nr_path):
-                os.mkdir(nr_path)
-            else:
+            if os.path.exists(nr_path):
                 shutil.rmtree(nr_path, ignore_errors=True)
+            os.mkdir(nr_path)
             name = os.path.basename(urlparse(tmpUrl).path)
             filename, file_extension = os.path.splitext(name)
             if file_extension == ".JPG":
-                name = filename+".jpg"
+                name = filename + ".jpg"
             # photo = os.path.join(os.path.dirname(__file__), timestamp + "/" + name)
             photo = os.path.join(nr_path, name)
 
             urllib.request.urlretrieve(tmpUrl, photo)
             return photo
         except:
-            return -1
+            name = nr + ".jpg"
+            photo = os.path.join(nr_path, name)
+
+            with open(photo, "w+") as p:
+                with open(os.path.abspath(os.path.join(os.path.abspath(os.getcwd()),
+                                                         "no_thumbnail.thumbnail"))) as thumb:
+                    p.write(thumb.read())
+
+            return photo
 
     def zdjecia_glowne_link(self, location):
         try:
