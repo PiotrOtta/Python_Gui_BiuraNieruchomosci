@@ -490,8 +490,8 @@ def projekt02_GUI():
         global everyOffer
         szczegoly = Toplevel(root)
         szczegoly.title(f"Szczegóły oferty nr.{everyOffer[indeksOferty][21]}")
-        szczegoly.geometry("420x600")
-        szczegoly.minsize(420, 400)
+        szczegoly.geometry("600x600")
+        szczegoly.minsize(600, 400)
 
         def zabijGo():
             szczegoly.destroy()
@@ -583,10 +583,10 @@ def projekt02_GUI():
                 temp_dane = everyOffer[indeksOferty][x]
                 if (temp_dane == '-1'):
                     temp_dane = 'Brak danych'
-                ttk.Label(panelWewnetrzny, text=row_names[x]+' : '+temp_dane).grid(row=x+2, column=1)
+                ttk.Label(panelWewnetrzny, text=row_names[x]+' : '+temp_dane).grid(row=x+3, column=1)
         
         lokal = ttk.Label(panelWewnetrzny, text=everyOffer[indeksOferty][17], wraplength=280, justify=ttk.CENTER, anchor="center")
-        lokal.grid(column=1,row=3)
+        lokal.grid(column=1,row=2)
         Opis = ttk.Label(panelWewnetrzny, text=everyOffer[indeksOferty][23], wraplength=600, justify=ttk.CENTER, anchor="center",borderwidth=2, relief="groove")
         Opis.grid(column=1, row=len(row_names)+5)
 
