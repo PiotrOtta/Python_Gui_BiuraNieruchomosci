@@ -189,10 +189,13 @@ def pobierzOferty():
         f = open(f''+dir_path+f'/{nazwa}', 'wb') #ZROBIC FOLDER Z NUMEREM OFERTY
         f.write(zdj.content)
         f.close()
+
         cena = cena.replace(" ","").replace("PLN","")
         print(cena)
         cena_za_m2 = cena_za_m2.replace(" ","").replace("PLN/m2","")
         print(cena_za_m2)
+        powierzchnia = powierzchnia.replace(" ","").replace("m2","")
+
         rows_def = {
             'balkon' : typ_balkonu,
             'budynek_pietra' : budynek_pietra,

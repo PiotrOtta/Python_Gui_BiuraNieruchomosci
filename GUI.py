@@ -161,6 +161,7 @@ def projekt02_GUI():
                 PepperHouse(2, progress, labelDownload)
             case 1:
                 # Kingdom Elblag
+                Kingdom(1)
                 print("Kingdom Elblag")
             case 2:
                 # Cargos
@@ -543,8 +544,13 @@ def projekt02_GUI():
                         (200, 150)))
                 else:
                     zdjeciaSzczegoly[zapisaneIndeks] = ttk.PhotoImage(
-                        image=Image.open(f'{os.getcwd()}/zdjecia/{everyOffer[indeksOferty][21]}/{filename}.png'))
+                        file=f'{os.getcwd()}/zdjecia/{everyOffer[indeksOferty][21]}/{filename}.png')
                 zapisaneIndeks += 1
+        else:
+            zdjeciaSzczegoly = [None] * 1
+            zdjeciaSzczegoly[0] = ImageTk.PhotoImage(image=(
+                        Image.open(f'{os.getcwd()}/brakZdjecia.jpg')).resize(
+                        (150, 150)))
 
         global indeksZmianyZdjecia
         indeksZmianyZdjecia = 0
@@ -604,16 +610,19 @@ def projekt02_GUI():
         global everyOffer, offersToShow
         everyOffer = []
         offersToShow = []
-        with open(nazwaPolaczonegoPliku, mode='r', encoding="utf8") as file:
-            reader = csv.reader(file)
-            rows = []
-            for row in reader:
-                rows.append(row)
-            everyOffer = rows
-            offersToShow = rows
-        showOffers()
+        if os.path.exists(nazwaPolaczonegoPliku):
+            with open(nazwaPolaczonegoPliku, mode='r', encoding="utf8") as file:
+                reader = csv.reader(file)
+                rows = []
+                for row in reader:
+                    rows.append(row)
+                everyOffer = rows
+                offersToShow = rows
+            showOffers()
 
     def showOffers():
+        for widget in oferty.winfo_children():
+            widget.destroy()
         if not (wybranySort == 0 and sorty[0] == 0):
             sortOffers()
         ammount: int = len(offersToShow)

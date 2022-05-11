@@ -72,8 +72,12 @@ class ParseInfoInLinks:
         
         obiekt.nazwa_biura = "PepperHouse"
         obiekt.cena = int(parsedHTML.find("p", {"class": "property-full-card_price"}).text.replace('zł','').replace(' ','')) or -1
-
-        obiekt.numer_oferty = str(parsedHTML.find("div", {"class": "meta-header"}).find("ul").findAll("li")[0].find('strong').next_sibling.replace(' ', '')) or None
+        
+        nr_oferty = parsedHTML.find("div", {"class": "meta-header"}).find("ul").findAll("li")[0].find('strong').next_sibling
+        if nr_oferty:
+            obiekt.numer_oferty = str(nr_oferty.replace(' ', '')) or None
+        else:
+             obiekt.numer_oferty = None
 
         obiekt.liczba_wyswietlen = int(parsedHTML.find("div", {"class": "meta-header"}).find("ul").findAll("li")[1].find('strong').next_sibling.replace(' ', '')) or None
 
