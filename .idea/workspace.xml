@@ -4,7 +4,53 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a24c28e0-506e-4260-93b3-2fc8fc2658c1" name="Changes" comment="JPG formatting check fix, Cargos fixes" />
+    <list default="true" id="a24c28e0-506e-4260-93b3-2fc8fc2658c1" name="Changes" comment="update requirements.txt">
+      <change afterPath="$PROJECT_DIR$/no_thumbnail.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cargos.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Cargos.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/GUI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KingdomElblag/KingdomElblag.csv" beforeDir="false" afterPath="$PROJECT_DIR$/KingdomElblag/KingdomElblag.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KingdomElblag/html_ofert.csv" beforeDir="false" afterPath="$PROJECT_DIR$/KingdomElblag/html_ofert.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PepperHouse.csv" beforeDir="false" afterPath="$PROJECT_DIR$/PepperHouse.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Symbioza.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Symbioza.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/linkiDoOfert.csv" beforeDir="false" afterPath="$PROJECT_DIR$/linkiDoOfert.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wgnoferty.csv" beforeDir="false" afterPath="$PROJECT_DIR$/wgnoferty.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zdjecia/210354/main.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/zdjecia/210354/main.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zdjecia/210355/main.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/zdjecia/210355/main.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zdjecia/210356/main.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/zdjecia/210356/main.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zdjecia/225892/main.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/zdjecia/225892/main.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zdjecia/229966/main.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/zdjecia/229966/main.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zdjecia/230105/main.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/zdjecia/230105/main.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zdjecia/230707/main.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/zdjecia/230707/main.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zdjecia/233003/main.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/zdjecia/233003/main.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zdjecia/233189/main.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/zdjecia/233189/main.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zdjecia/233191/main.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/zdjecia/233191/main.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zdjecia/233201/main.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/zdjecia/233201/main.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zdjecia/233503/main.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/zdjecia/233503/main.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zdjecia/234205/main.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/zdjecia/234205/main.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zdjecia/234357/main.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/zdjecia/234357/main.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zdjecia/236052/main.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/zdjecia/236052/main.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zdjecia/238326/main.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/zdjecia/238326/main.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zdjecia/238887/main.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/zdjecia/238887/main.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zdjecia/239030/main.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/zdjecia/239030/main.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zdjecia/239220/main.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/zdjecia/239220/main.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zdjecia/239405/main.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/zdjecia/239405/main.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zdjecia/239494/main.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/zdjecia/239494/main.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zdjecia/239565/main.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/zdjecia/239565/main.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zdjecia/239568/main.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/zdjecia/239568/main.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zdjecia/57180,/main.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/zdjecia/57180,/main.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zdjecia/BX04254/BX042541.JPG" beforeDir="false" afterPath="$PROJECT_DIR$/zdjecia/BX04254/BX042541.JPG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zdjecia/ST02035/ST020351.JPG" beforeDir="false" afterPath="$PROJECT_DIR$/zdjecia/ST02035/ST020351.JPG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zdjecia/ST02035/ST020351.thumbnail" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/zdjecia/ST02037/ST020371.JPG" beforeDir="false" afterPath="$PROJECT_DIR$/zdjecia/ST02037/ST020371.JPG" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zdjecia_Cargos/BX04244/BX042441.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/zdjecia_Cargos/BX04251/BX042511.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/zdjecia_Cargos/CA01071/CA010711.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/zdjecia_Cargos/CA01072/CA010721.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/zdjecia_Cargos/EL02736/EL027361.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/zdjecia_Cargos/EL02738/EL027381.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/zdjecia_Cargos/ST02037/ST020371.jpg" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,6 +83,13 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\lukasz.cwiek\PycharmProjects\Python_Gui_BiuraNieruchomosci" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="GUI" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -83,7 +136,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651960533897</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="update requirements.txt">
+      <created>1652023376172</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1652023376172</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -99,7 +159,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="JPG formatting check fix, Cargos fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="JPG formatting check fix, Cargos fixes" />
+    <MESSAGE value="update requirements.txt" />
+    <option name="LAST_COMMIT_MESSAGE" value="update requirements.txt" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

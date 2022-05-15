@@ -401,7 +401,8 @@ def projekt02_GUI():
                     if minPokoi > maxPokoi:
                         error = True
                         bledne.append("Pomieszczenia - max<min")
-                    filteringOffers = filter(lambda item: (maxPokoi >= int(item[12]) >= minPokoi),
+                    else:
+                        filteringOffers = filter(lambda item: (maxPokoi >= int(item[12]) >= minPokoi),
                                              filteringOffers)
                 except:
                     error = True
@@ -492,9 +493,9 @@ def projekt02_GUI():
     zdjeciaSzczegoly = []
 
     def pokazSzczegolyOferty(indeksOferty: int):
-        global everyOffer
+        global everyOffer, offersToShow
         szczegoly = Toplevel(root)
-        szczegoly.title(f"Szczegóły oferty nr.{everyOffer[indeksOferty][21]}")
+        szczegoly.title(f"Szczegóły oferty nr.{offersToShow[indeksOferty][21]}")
         szczegoly.geometry("600x600")
         szczegoly.minsize(600, 400)
 
@@ -523,7 +524,7 @@ def projekt02_GUI():
         panelWewnetrzny.rowconfigure(3, weight=1)
 
         global zdjeciaSzczegoly
-        pobraneInfo = next(os.walk(f"{os.getcwd()}/zdjecia/{everyOffer[indeksOferty][21]}/"), (None, None, []))[2]
+        pobraneInfo = next(os.walk(f"{os.getcwd()}/zdjecia/{offersToShow[indeksOferty][21]}/"), (None, None, []))[2]
         odpowiednieZdjecia = pobraneInfo
         zapisaneIndeks = 0
         if len(pobraneInfo) > 0:
@@ -538,13 +539,18 @@ def projekt02_GUI():
             zdjeciaSzczegoly = [None] * len(odpowiednieZdjecia)
             for nazwa in odpowiednieZdjecia:
                 filename, file_extension = os.path.splitext(nazwa)
-                if file_extension.lower() == ".jpg":
+                try:
+                    if file_extension.lower() == ".jpg":
+                        zdjeciaSzczegoly[zapisaneIndeks] = ImageTk.PhotoImage(image=(
+                            Image.open(f'{os.getcwd()}/zdjecia/{offersToShow[indeksOferty][21]}/{filename}.jpg')).resize(
+                            (200, 150)))
+                    else:
+                        zdjeciaSzczegoly[zapisaneIndeks] = ttk.PhotoImage(
+                            file=f'{os.getcwd()}/zdjecia/{offersToShow[indeksOferty][21]}/{filename}.png')
+                except:
                     zdjeciaSzczegoly[zapisaneIndeks] = ImageTk.PhotoImage(image=(
-                        Image.open(f'{os.getcwd()}/zdjecia/{everyOffer[indeksOferty][21]}/{filename}.jpg')).resize(
-                        (200, 150)))
-                else:
-                    zdjeciaSzczegoly[zapisaneIndeks] = ttk.PhotoImage(
-                        file=f'{os.getcwd()}/zdjecia/{everyOffer[indeksOferty][21]}/{filename}.png')
+                            Image.open(f'{os.getcwd()}/zdjecia/{offersToShow[indeksOferty][21]}/{offersToShow[indeksOferty][20]}.jpg')).resize(
+                            (200, 150)))
                 zapisaneIndeks += 1
         else:
             zdjeciaSzczegoly = [None] * 1
@@ -590,14 +596,14 @@ def projekt02_GUI():
             if (x == 23 or x == 44 or x == 45):
                 continue
             else:
-                temp_dane = everyOffer[indeksOferty][x]
+                temp_dane = offersToShow[indeksOferty][x]
                 if (temp_dane == '-1'):
                     temp_dane = 'Brak danych'
                 ttk.Label(panelWewnetrzny, text=row_names[x]+' : '+temp_dane).grid(row=x+3, column=1)
         
-        lokal = ttk.Label(panelWewnetrzny, text=everyOffer[indeksOferty][17], wraplength=280, justify=ttk.CENTER, anchor="center")
+        lokal = ttk.Label(panelWewnetrzny, text=offersToShow[indeksOferty][17], wraplength=280, justify=ttk.CENTER, anchor="center")
         lokal.grid(column=1,row=2)
-        Opis = ttk.Label(panelWewnetrzny, text=everyOffer[indeksOferty][23], wraplength=600, justify=ttk.CENTER, anchor="center",borderwidth=2, relief="groove")
+        Opis = ttk.Label(panelWewnetrzny, text=offersToShow[indeksOferty][23], wraplength=600, justify=ttk.CENTER, anchor="center",borderwidth=2, relief="groove")
         Opis.grid(column=1, row=len(row_names)+5)
 
     # oferty
@@ -657,7 +663,7 @@ def projekt02_GUI():
                     with Image.open(f"{os.getcwd()}{filename}") as im:
                         im.save(f"{os.getcwd()}/zdjecia/{offersToShow[indeksOferty][21]}/{offersToShow[indeksOferty][20]}.jpg", "JPEG")
                         im.thumbnail((160, 80), Image.ANTIALIAS)
-                        im.save(f"{os.getcwd()}/zdjecia/{offersToShow[indeksOferty][21]}/{offersToShow[indeksOferty][20]}.jpg.thumbnail", "JPEG")
+                        im.save(f"{os.getcwd()}/zdjecia/{offersToShow[indeksOferty][21]}/{offersToShow[indeksOferty][20]}.thumbnail", "JPEG")
                 try:
                     zdjecia[indeksOferty - 1] = ImageTk.PhotoImage(image=Image.open(
                         f'{os.getcwd()}/zdjecia/{offersToShow[indeksOferty][21]}/{filename}.thumbnail'))
