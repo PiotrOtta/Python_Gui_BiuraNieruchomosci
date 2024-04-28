@@ -65,7 +65,7 @@ pip install bs4
 pip install requests
 ```
 
-Then, all left to do is running the command below
+Then all left to do is run the following command
 
 ```powershell
 python GUI.py
